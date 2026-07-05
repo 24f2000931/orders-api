@@ -45,7 +45,7 @@ def create_order(
     client_id: str = Header(..., alias="X-Client-Id"),
 ):
     now = time.time()
-
+    print(f"Client={client_id} Time={now}")
     # Get this client's requests within the last 10 seconds
     history = client_requests.get(client_id, [])
     history = [t for t in history if now - t < WINDOW]
